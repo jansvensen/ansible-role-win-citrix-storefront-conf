@@ -1,0 +1,69 @@
+---
+- name: Create SF Vars
+  script: createsfvars.ps1
+  args:
+    creates: C:\Logs\sf-vars.xml
+  environment:
+    citrix_storefront_HostbaseUrl: "{{ citrix_storefront_HostbaseUrl }}"
+    citrix_storefront_FarmServers: "{{ citrix_storefront_FarmServers }}"
+    citrix_storefront_StoreVirtualPath: "{{ citrix_storefront_StoreVirtualPath }}"
+    citrix_storefront_TransportType: "{{ citrix_storefront_TransportType }}"
+    citrix_storefront_GatewayUrl: "{{ citrix_storefront_GatewayUrl }}"
+    citrix_storefront_GatewaySTAUrls: "{{ citrix_storefront_GatewaySTAUrls }}"
+    citrix_storefront_GatewayName: "{{ citrix_storefront_GatewayName }}"
+
+- name: Copy a Storefront script file
+  win_copy:
+    src: createsfsite.ps1
+    dest: C:\install\
+
+- name: Copy a Storefront script file
+  win_copy:
+    src: SimpleDeployment.ps1
+    dest: C:\install\
+
+- name: Copy a Storefront script file
+  win_copy:
+    src: RemoteAccessDeployment.ps1
+    dest: C:\install\
+
+- name: Create task to run a PS script
+  win_scheduled_task:
+    name: Setup StoreFront
+    description: Run a PowerShell script
+    actions:
+    - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+      arguments: -ExecutionPolicy Unrestricted -NonInteractive -File C:\install\createsfsite.ps1
+    username: vagrant
+    password: vagrant
+    run_level: highest
+    logon_type: password
+    state: present
+
+- name: Storefront folder stat
+  win_stat:
+    path: C:\inetpub\wwwroot\Citrix
+  register: sf_info
+
+- name: Start Create task
+  win_shell: Start-ScheduledTask -TaskName "Setup StoreFront"
+  when: sf_info.stat.exists == False
+
+- name: Sleep for a while
+  ansible.builtin.wait_for:
+    timeout: 120
+  delegate_to: localhost
+
+- name: Loop until Task is 'TASK_STATE_READY'
+  community.windows.win_scheduled_task_stat:
+    name: Setup StoreFront
+  register: task_stat
+  until: task_stat.state.status == 'TASK_STATE_READY'
+- debug: msg={{task_stat.state.status}}
+  retries: 40
+  delay: 30
+
+- name: Delete SF Scheduled Task
+  win_scheduled_task:
+    name: Setup StoreFront
+    state: absent
