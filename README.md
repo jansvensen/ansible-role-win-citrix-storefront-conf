@@ -1,0 +1,1 @@
+# ansible-role-win-citrix-storefront-conf
