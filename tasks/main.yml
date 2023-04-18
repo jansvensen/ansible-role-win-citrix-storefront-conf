@@ -15,17 +15,17 @@
 - name: Copy a Storefront script file
   win_copy:
     src: createsfsite.ps1
-    dest: C:\install\
+    dest: '{{ citrix_installfolder }}'
 
 - name: Copy a Storefront script file
   win_copy:
     src: SimpleDeployment.ps1
-    dest: C:\install\
+    dest: '{{ citrix_installfolder }}'
 
 - name: Copy a Storefront script file
   win_copy:
     src: RemoteAccessDeployment.ps1
-    dest: C:\install\
+    dest: '{{ citrix_installfolder }}'
 
 - name: Create task to run a PS script
   win_scheduled_task:
@@ -33,7 +33,7 @@
     description: Run a PowerShell script
     actions:
     - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-      arguments: -ExecutionPolicy Unrestricted -NonInteractive -File C:\install\createsfsite.ps1
+      arguments: -ExecutionPolicy Unrestricted -NonInteractive -File '{{ citrix_installfolder }}'\createsfsite.ps1
     username: vagrant
     password: vagrant
     run_level: highest
