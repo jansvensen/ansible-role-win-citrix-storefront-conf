@@ -45,7 +45,7 @@
     path: C:\inetpub\wwwroot\Citrix
   register: sf_info
 
-- name: Start Create task
+- name: Start task
   win_shell: Start-ScheduledTask -TaskName "Setup StoreFront"
   when: sf_info.stat.exists == False
 
