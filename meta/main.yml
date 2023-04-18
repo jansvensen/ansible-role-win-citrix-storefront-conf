@@ -2,7 +2,7 @@ galaxy_info:
 
   author: Sven Jansen
   
-  description: your role description
+  description: ansible-role-win-citrix-storefront-conf
 
   license: license (GPL-2.0-or-later, MIT, etc)
 
