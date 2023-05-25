@@ -1,6 +1,4 @@
-#
 # Copyright Citrix Systems, Inc. All rights reserved.
-#
 # Copied to this repository, as the CallBackURL is mandatory by default which was not required in our scenario. presales@devicetrust.com
 
 Param(
