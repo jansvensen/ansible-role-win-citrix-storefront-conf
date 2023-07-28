@@ -1,4 +1,9 @@
 ---
+  - name: Create Log Folder
+    win_file:
+      path: C:\Logs
+      state: directory
+
   - name: Create SF Vars
     script: createsfvars.ps1
     args:
