@@ -39,16 +39,19 @@ Import-Module Citrix.StoreFront
 # Create a remote access deployment using the RemoteAccessDeployment example
 $scriptDirectory = "C:\install\"
 $scriptPath = Join-Path $scriptDirectory "RemoteAccessDeployment.ps1"
-& $scriptPath -HostbaseUrl $HostbaseUrl -SiteId $SiteId -FarmServers $FarmServers -StoreVirtualPath $StoreVirtualPath -Farmtype $Farmtype -LoadbalanceServers $LoadbalanceServers -Port $Port -TransportType $TransportType -GatewayUrl $GatewayUrl -GatewaySTAUrls $GatewaySTAUrls -GatewayName $GatewayName # -GatewayCallbackUrl ("$GatewayUrl/CitrixAuthService/AuthService.asmx") # Removed Callback URL, as not required
+& $scriptPath -HostbaseUrl $HostbaseUrl -SiteId $SiteId -FarmServers $FarmServers -StoreVirtualPath $StoreVirtualPath -Farmtype $Farmtype -LoadbalanceServers $LoadbalanceServers -Port $Port -TransportType $TransportType -GatewayUrl $GatewayUrl -GatewaySTAUrls $GatewaySTAUrls -GatewayName $GatewayName
 write-output "Local store configuration complete"
 
 write-output "Starting customizations"
 $Rfw = Get-STFWebReceiverService -SiteId $SiteId -VirtualPath "/Citrix/StoreWeb"
+
 write-output "Enabling loopback for SSL offload"
 Set-STFWebReceiverCommunication -WebReceiverService $Rfw -Loopback "OnUsingHttp"
+
 write-output "Workspace actions"
 Set-STFWebReceiverUserInterface -WebReceiverService $Rfw -WorkspaceControlLogoffAction "None"
 Set-STFWebReceiverUserInterface -WebReceiverService $Rfw -WorkspaceControlAutoReconnectAtLogon $False
+
 write-output "Sets default IIS page"
 Set-STFWebReceiverService -WebReceiverService $Rfw -DefaultIISSite:$True
 

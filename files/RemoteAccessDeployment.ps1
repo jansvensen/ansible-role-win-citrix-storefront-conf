@@ -32,8 +32,7 @@ Import-Module Citrix.StoreFront.Roaming
 # Create a simple deployment by invoking the SimpleDeployment example
 $scriptDirectory = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 $scriptPath = Join-Path $scriptDirectory "SimpleDeployment.ps1"
-& $scriptPath -HostbaseUrl $HostbaseUrl -SiteId $SiteId -FarmServers $FarmServers -StoreVirtualPath $StoreVirtualPath -Farmtype $Farmtype `
-    -LoadbalanceServers $LoadbalanceServers -Port $Port  -SSLRelayPort $SSLRelayPort -TransportType $TransportType
+& $scriptPath -HostbaseUrl $HostbaseUrl -SiteId $SiteId -FarmServers $FarmServers -StoreVirtualPath $StoreVirtualPath -Farmtype $Farmtype -LoadbalanceServers $LoadbalanceServers -Port $Port  -SSLRelayPort $SSLRelayPort -TransportType $TransportType
 
 # Determine the Authentication and Receiver sites based on the Store
 $store = Get-STFStoreService -VirtualPath $StoreVirtualPath
