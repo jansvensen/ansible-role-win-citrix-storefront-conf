@@ -26,8 +26,8 @@
       actions:
       - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
         arguments: -ExecutionPolicy Unrestricted -NonInteractive -File '{{ citrix_installfolder }}'\createsfsite.ps1
-      username: vagrant
-      password: vagrant
+      username: '{{ citrix_admin_user }}'
+      password: '{{ citrix_admin_password }}'
       run_level: highest
       logon_type: password
       state: present
