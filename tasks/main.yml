@@ -49,7 +49,7 @@
 #    win_shell: Start-ScheduledTask -TaskName "Setup StoreFront"
 #    when: sf_info.stat.exists == False
 
-  - name: Sleep for a while
+  - name: Sleep for 180 seconds
     ansible.builtin.wait_for:
       timeout: 180
     delegate_to: localhost
