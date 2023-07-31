@@ -14,10 +14,10 @@ Param(
     [Parameter(Mandatory=$false)][string]$GatewayName=$env:GatewayName
 )
 
-Start-Transcript -Path "{{ directory_logging }}s\transcript.txt"
+Start-Transcript -Path "{{ directory_logging }}transcript.txt"
 
 #Import ENV vars created
-$importedsf = Import-Clixml "{{ directory_logging }}s\sf-vars.xml"
+$importedsf = Import-Clixml "{{ directory_logging }}sf-vars.xml"
 $HostbaseUrl = $importedsf.HostbaseUrl
 $FarmServers = $importedsf.FarmServers -split ","
 $StoreVirtualPath = $importedsf.StoreVirtualPath
