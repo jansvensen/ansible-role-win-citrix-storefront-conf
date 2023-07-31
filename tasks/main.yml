@@ -42,24 +42,24 @@
       path: C:\inetpub\wwwroot\Citrix
     register: sf_info
 
-  - name: Start task
-    win_shell: Start-ScheduledTask -TaskName "Setup StoreFront"
-    when: sf_info.stat.exists == False
+#  - name: Start task
+#    win_shell: Start-ScheduledTask -TaskName "Setup StoreFront"
+#    when: sf_info.stat.exists == False
 
-  - name: Sleep for a while
-    ansible.builtin.wait_for:
-      timeout: 120
-    delegate_to: localhost
+#  - name: Sleep for a while
+#    ansible.builtin.wait_for:
+#      timeout: 120
+#    delegate_to: localhost
 
-  - name: Loop until Task is 'TASK_STATE_READY'
-    community.windows.win_scheduled_task_stat:
-      name: Setup StoreFront
-    register: task_stat
-    until: task_stat.state.status == 'TASK_STATE_READY'
-  - debug: msg={{task_stat.state.status}}
-    retries: 40
-    delay: 30
-
+#  - name: Loop until Task is 'TASK_STATE_READY'
+#    community.windows.win_scheduled_task_stat:
+#      name: Setup StoreFront
+#    register: task_stat
+#    until: task_stat.state.status == 'TASK_STATE_READY'
+#  - debug: msg={{task_stat.state.status}}
+#    retries: 40
+#    delay: 30
+#
 #  - name: Delete SF Scheduled Task
 #    win_scheduled_task:
 #      name: Setup StoreFront
