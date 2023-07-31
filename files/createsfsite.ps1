@@ -37,7 +37,7 @@ $ReportErrorShowInnerException = $true
 Import-Module Citrix.StoreFront
 
 # Create a remote access deployment using the RemoteAccessDeployment example
-$scriptDirectory = "C:\install\"
+$scriptDirectory = "{{ directory_install }}\"
 $scriptPath = Join-Path $scriptDirectory "RemoteAccessDeployment.ps1"
 & $scriptPath -HostbaseUrl $HostbaseUrl -SiteId $SiteId -FarmServers $FarmServers -StoreVirtualPath $StoreVirtualPath -Farmtype $Farmtype -LoadbalanceServers $LoadbalanceServers -Port $Port -TransportType $TransportType -GatewayUrl $GatewayUrl -GatewaySTAUrls $GatewaySTAUrls -GatewayName $GatewayName
 write-output "Local store configuration complete"
