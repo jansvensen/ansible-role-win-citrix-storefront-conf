@@ -54,7 +54,7 @@ $citrixAGBasic = Get-STFAuthenticationProtocolsAvailable | Where-Object { $_ -ma
 Enable-STFAuthenticationServiceProtocol -AuthenticationService $authentication -Name $citrixAGBasic
 
 # Add a new Gateway used to access the new Store remotely
-# Add-STFRoamingGateway -Name $GatewayName -LogonType Domain -Version Version10_0_69_4 -GatewayUrl $GatewayUrl -SecureTicketAuthorityUrls $GatewaySTAUrls
+Add-STFRoamingGateway -Name $GatewayName -LogonType Domain -Version Version10_0_69_4 -GatewayUrl $GatewayUrl -SecureTicketAuthorityUrls $GatewaySTAUrls
 
 # Get the new Gateway from the configuration (Add-STFRoamingGateway will return the new Gateway if -PassThru is supplied as a parameter)
 $gateway = Get-STFRoamingGateway -Name $GatewayName
