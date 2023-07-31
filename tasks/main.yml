@@ -7,7 +7,7 @@
   - name: Create SF Vars
     script: createsfvars.ps1
     args:
-      creates: '{{ directory_logging }}'\sf-vars.xml
+      creates: '{{ directory_logging }}\sf-vars.xml'
     environment:
       citrix_storefront_HostbaseUrl: "{{ citrix_storefront_HostbaseUrl }}"
       citrix_storefront_FarmServers: "{{ citrix_storefront_FarmServers }}"
