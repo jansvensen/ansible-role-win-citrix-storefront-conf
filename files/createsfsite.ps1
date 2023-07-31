@@ -14,10 +14,10 @@ Param(
     [Parameter(Mandatory=$false)][string]$GatewayName=$env:GatewayName
 )
 
-Start-Transcript -Path "{{ directory_logging }}transcript.txt"
+Start-Transcript -Path "c:\logs\transcript.txt"
 
 #Import ENV vars created
-$importedsf = Import-Clixml "{{ directory_logging }}sf-vars.xml"
+$importedsf = Import-Clixml "c:\logs\sf-vars.xml"
 $HostbaseUrl = $importedsf.HostbaseUrl
 $FarmServers = $importedsf.FarmServers -split ","
 $StoreVirtualPath = $importedsf.StoreVirtualPath
@@ -37,7 +37,7 @@ $ReportErrorShowInnerException = $true
 Import-Module Citrix.StoreFront
 
 # Create a remote access deployment using the RemoteAccessDeployment example
-$scriptDirectory = "{{ directory_install }}\"
+$scriptDirectory = "c:\install\"
 $scriptPath = Join-Path $scriptDirectory "RemoteAccessDeployment.ps1"
 & $scriptPath -HostbaseUrl $HostbaseUrl -SiteId $SiteId -FarmServers $FarmServers -StoreVirtualPath $StoreVirtualPath -Farmtype $Farmtype -LoadbalanceServers $LoadbalanceServers -Port $Port -TransportType $TransportType -GatewayUrl $GatewayUrl -GatewaySTAUrls $GatewaySTAUrls -GatewayName $GatewayName
 write-output "Local store configuration complete"
