@@ -60,7 +60,7 @@
     retries: 40
     delay: 30
 
-  - name: Delete SF Scheduled Task
-    win_scheduled_task:
-      name: Setup StoreFront
-      state: absent
+#  - name: Delete SF Scheduled Task
+#    win_scheduled_task:
+#      name: Setup StoreFront
+#      state: absent
