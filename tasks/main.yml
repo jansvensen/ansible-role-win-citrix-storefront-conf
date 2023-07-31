@@ -30,7 +30,7 @@
       description: Run a PowerShell script
       actions:
       - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-        arguments: -ExecutionPolicy Unrestricted -NonInteractive -File '{{ citrix_installfolder }}'\createsfsite.ps1
+        arguments: -ExecutionPolicy Unrestricted -NonInteractive -File '{{ citrix_installfolder }}\createsfsite.ps1'
       username: '{{ citrix_admin_user }}'
       password: '{{ citrix_admin_password }}'
       run_level: highest
