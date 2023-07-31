@@ -8,4 +8,4 @@ $outputObj = @{
     "GatewayName" = $env:citrix_storefront_GatewayName
 }
     
-$outputObj | Export-Clixml "{{ directory_logging }}s\sf-vars.xml" -Force
+$outputObj | Export-Clixml "{{ directory_logging }}sf-vars.xml" -Force
