@@ -4,9 +4,9 @@ galaxy_info:
   
   description: ansible-role-win-citrix-storefront-conf
 
-  license: license (GPL-2.0-or-later, MIT, etc)
+  license: MIT
 
-  min_ansible_version: 2.1
+  min_ansible_version: 2.10
 
   galaxy_tags: []
 
