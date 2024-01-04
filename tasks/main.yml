@@ -32,43 +32,7 @@
   - name: Configure Storefront
     script: files/createsfsite.ps1
 
-#  - name: Create task to run a PS script
-#    win_scheduled_task:
-#      name: Setup StoreFront
-#      description: Run a PowerShell script
-#      actions:
-#      - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-#        arguments: -ExecutionPolicy Unrestricted -NonInteractive -File '{{ citrix_installfolder }}createsfsite.ps1'
-#      username: '{{ citrix_admin_user }}'
-#      password: '{{ citrix_admin_password }}'
-#      run_level: highest
-#      logon_type: password
-#      state: present
-
-#  - name: Storefront folder stat
-#    win_stat:
-#      path: C:\inetpub\wwwroot\Citrix
-#    register: sf_info
-
-#  - name: Start task
-#    win_shell: Start-ScheduledTask -TaskName "Setup StoreFront"
-#    when: sf_info.stat.exists == False
-
   - name: Sleep for 180 seconds
     ansible.builtin.wait_for:
       timeout: 180
     delegate_to: localhost
-
-#  - name: Loop until Task is 'TASK_STATE_READY'
-#    community.windows.win_scheduled_task_stat:
-#      name: Setup StoreFront
-#    register: task_stat
-#    until: task_stat.state.status == 'TASK_STATE_READY'
-#  - debug: msg={{task_stat.state.status}}
-#    retries: 40
-#    delay: 30
-#
-#  - name: Delete SF Scheduled Task
-#    win_scheduled_task:
-#      name: Setup StoreFront
-#      state: absent
