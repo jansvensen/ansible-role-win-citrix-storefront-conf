@@ -9,13 +9,13 @@
     args:
       creates: '{{ directory_logging }}\sf-vars.xml'
     environment:
-      citrix_storefront_HostbaseUrl: "{{ citrix_storefront_HostbaseUrl }}"
-      citrix_storefront_FarmServers: "{{ citrix_storefront_FarmServers }}"
-      citrix_storefront_StoreVirtualPath: "{{ citrix_storefront_StoreVirtualPath }}"
-      citrix_storefront_TransportType: "{{ citrix_storefront_TransportType }}"
-      citrix_storefront_GatewayUrl: "{{ citrix_storefront_GatewayUrl }}"
-      citrix_storefront_GatewaySTAUrls: "{{ citrix_storefront_GatewaySTAUrls }}"
-      citrix_storefront_GatewayName: "{{ citrix_storefront_GatewayName }}"
+      citrix_storefront_HostbaseUrl: "{{ citrix.storefront.hostbaseurl }}"
+      citrix_storefront_FarmServers: "{{ citrix.storefront.farmservers }}"
+      citrix_storefront_StoreVirtualPath: "{{ citrix.storefront.storevirtualpath }}"
+      citrix_storefront_TransportType: "{{ citrix.storefront.transporttype }}"
+      citrix_storefront_GatewayUrl: "{{ citrix.storefront.gateway.url }}"
+      citrix_storefront_GatewaySTAUrls: "{{ citrix.storefront.gateway.staurl }}"
+      citrix_storefront_GatewayName: "{{ citrix.storefront.gateway.name }}"
 
   - name: Copy script
     win_copy:
