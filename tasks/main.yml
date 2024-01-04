@@ -17,13 +17,6 @@
       citrix_storefront_GatewaySTAUrls: "{{ citrix.storefront.gateway.staurl }}"
       citrix_storefront_GatewayName: "{{ citrix.storefront.gateway.name }}"
 
-  - name: Copy script
-    win_copy:
-      src: '{{ item }}'
-      dest: '{{ citrix_installfolder }}'
-    with_fileglob:
-      - "*.ps1"
-
   - name: Sleep for 60 seconds
     ansible.builtin.wait_for:
       timeout: 60
