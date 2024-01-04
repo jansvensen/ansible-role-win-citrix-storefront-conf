@@ -1,13 +1,13 @@
 ---
   - name: Create Log Folder
     win_file:
-      path: '{{ directory_logging }}'
+      path: '{{ win.directory.logging }}'
       state: directory
 
   - name: Create SF Vars
     script: createsfvars.ps1
     args:
-      creates: '{{ directory_logging }}\sf-vars.xml'
+      creates: '{{ win.directory.logging }}\sf-vars.xml'
     environment:
       citrix_storefront_HostbaseUrl: "{{ citrix.storefront.hostbaseurl }}"
       citrix_storefront_FarmServers: "{{ citrix.storefront.farmservers }}"
