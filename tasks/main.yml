@@ -11,7 +11,7 @@
     environment:
       citrix_storefront_HostbaseUrl: "{{ citrix.storefront.hostbaseurl }}"
       citrix_storefront_FarmServers: "{{ citrix.storefront.farmservers }}"
-      citrix_storefront_StoreVirtualPath: "{{ citrix.storefront.storevirtualpath }}"
+      citrix_storefront_StoreVirtualPath: "{{ citrix.storefront.path }}"
       citrix_storefront_TransportType: "{{ citrix.storefront.transporttype }}"
       citrix_storefront_GatewayUrl: "{{ citrix.storefront.gateway.url }}"
       citrix_storefront_GatewaySTAUrls: "{{ citrix.storefront.gateway.staurl }}"
