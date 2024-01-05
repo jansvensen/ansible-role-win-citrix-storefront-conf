@@ -20,7 +20,7 @@
   - name: Copy script
     win_copy:
       src: '{{ item }}'
-      dest: '{{ win.directory.install }}'
+      dest: '{{ win_directory_install }}'
     with_fileglob:
       - "*.ps1"
 
@@ -38,7 +38,7 @@
 #      description: Run a PowerShell script
 #      actions:
 #      - path: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-#        arguments: -ExecutionPolicy Unrestricted -NonInteractive -File '{{ win.directory.install }}createsfsite.ps1'
+#        arguments: -ExecutionPolicy Unrestricted -NonInteractive -File '{{ win_directory_install }}createsfsite.ps1'
 #      username: '{{ citrix_admin_user }}'
 #      password: '{{ citrix_admin_password }}'
 #      run_level: highest
