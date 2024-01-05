@@ -24,9 +24,9 @@
     with_fileglob:
       - "*.ps1"
 
-  - name: Sleep for 60 seconds
+  - name: Sleep for 30 seconds
     ansible.builtin.wait_for:
-      timeout: 60
+      timeout: 30
     delegate_to: localhost
 
   - name: Configure Storefront
