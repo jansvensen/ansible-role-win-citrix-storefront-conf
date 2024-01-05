@@ -14,7 +14,7 @@
       citrix_storefront_StoreVirtualPath: "{{ citrix.storefront.path }}"
       citrix_storefront_TransportType: "{{ citrix.storefront.transporttype }}"
       citrix_storefront_GatewayUrl: "{{ citrix.storefront.gateway.url }}"
-      citrix_storefront_GatewaySTAUrls: "{{ citrix.storefront.gateway.staurls }}"
+      citrix_storefront_GatewaySTAUrls: "{{ citrix.storefront.gateway.staurl }}"
       citrix_storefront_GatewayName: "{{ citrix.storefront.gateway.name }}"
 
   - name: Copy script
